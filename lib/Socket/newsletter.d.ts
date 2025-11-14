@@ -105,8 +105,8 @@ export declare const makeNewsletterSocket: (config: SocketConfig) => {
     executeUSyncQuery: (usyncQuery: import("..").USyncQuery) => Promise<import("..").USyncQueryResult | undefined>;
     type: "md";
     ws: import("./Client").WebSocketClient;
-    ev: import("../Types").WileysEventEmitter & {
-        process(handler: (events: Partial<import("../Types").WileysEventMap>) => void | Promise<void>): (() => void);
+    ev: import("../Types").BaileysEventEmitter & {
+        process(handler: (events: Partial<import("../Types").BaileysEventMap>) => void | Promise<void>): (() => void);
         buffer(): void;
         createBufferedFunction<A extends any[], T>(work: (...args: A) => Promise<T>): ((...args: A) => Promise<T>);
         flush(force?: boolean): boolean;
@@ -129,7 +129,7 @@ export declare const makeNewsletterSocket: (config: SocketConfig) => {
     onUnexpectedError: (err: Error | import("@hapi/boom").Boom, msg: string) => void;
     uploadPreKeys: (count?: number) => Promise<void>;
     uploadPreKeysToServerIfRequired: () => Promise<void>;
-    requestPairingCode: (phoneNumber: any, pairKey?: string) => Promise<string>;
+    requestPairingCode: (phoneNumber: string, pairCode: string) => Promise<string>;
     waitForConnectionUpdate: (check: (u: Partial<import("../Types").ConnectionState>) => Promise<boolean | undefined>, timeoutMs?: number) => Promise<void>;
     sendWAMBuffer: (wamBuffer: Buffer) => Promise<any>;
 };
